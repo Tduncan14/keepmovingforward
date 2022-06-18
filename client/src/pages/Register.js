@@ -1,10 +1,13 @@
 import React,{useState} from 'react';
 import {Link} from'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 
 
 
 const Register  = () => {
+
 
 
     const [name,setName] =  useState('');
@@ -17,12 +20,26 @@ const Register  = () => {
 
     const registerUser=()=>{
 
-        const userObj = {
+
+        if(password === confirmPassword){
+
+         const userObj = {
             name,password,email,confirmPassword
         }
 
+        try{
 
-        console.log(userObj,password,'keep moving forward')
+        }
+
+        catch(err){
+
+        }
+
+        }
+
+        else{
+            toast.error('Passwords  not matched')
+        }
 
 
     }
