@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Link} from'react-router-dom';
 
 
@@ -7,7 +7,25 @@ import {Link} from'react-router-dom';
 const Register  = () => {
 
 
+    const [name,setName] =  useState('');
+    const [email,setEmail] = useState('');
+    const [password,setPassword] =useState('');
+    const [confirmPassword,setConfirmedPassword] =useState('');
 
+
+
+
+    const registerUser=()=>{
+
+        const userObj = {
+            name,password,email,confirmPassword
+        }
+
+
+        console.log(userObj,'keep moving forward')
+
+
+    }
 
 
 
@@ -22,26 +40,31 @@ const Register  = () => {
 
             <input type="text" className="py-1 px-3 border-2 
             border-blue-800 rounded
-             focus:outline-none w-full" placeholder="name"/>
+             focus:outline-none w-full" placeholder="name"
+              value={name}
+              onChange={(e) => setName(e.currentTarget.value)}/>
 
            <input type="text" className="py-1 px-3 border-2 
             border-blue-800 rounded
-             focus:outline-none w-full" placeholder="email"/>
+             focus:outline-none w-full" placeholder="email"
+             onChange={(e) => setEmail(e.target.value)}/>
 
 
          <input type="text" className="py-1 px-3 border-2 
             border-blue-800 rounded
-             focus:outline-none w-full" placeholder="password"/>
+             focus:outline-none w-full" value={password} placeholder="password"
+             onChange={(e) => setPassword(e.target.value)}/>
 
         <input type="text" className="py-1 px-3 border-2 
             border-blue-800 rounded
-             focus:outline-none w-full" placeholder="comfirm password"/>
+             focus:outline-none w-full" placeholder="comfirm password"
+              onChange={(e)=>setConfirmedPassword(e.target.value)}/>
 
 
              <div className="flex justify-between items-end">
-                <Link to="/login" className="underline">Click Here To Login</Link>
+                <Link to="/login" className="underline text-secondary">Click Here To Login</Link>
 
-                <button className="py-1 px-3 text-white bg-blue-800">REGISTER</button>
+                <button className="py-1 px-3 text-white bg-blue-800" onClick={registerUser}>REGISTER</button>
              </div>
         </div>
 
